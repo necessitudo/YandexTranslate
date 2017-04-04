@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
         tran = getSupportFragmentManager().beginTransaction();
         tran.add(R.id.frgCtrl, fragment);
         tran.commit();
+
     }
 
     @Override

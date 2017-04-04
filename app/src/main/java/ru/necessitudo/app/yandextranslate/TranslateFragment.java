@@ -9,10 +9,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 
+import io.realm.Realm;
+
 
 public class TranslateFragment extends Fragment {
 
     private EditText inputText;
+    private Realm    realmDB;
 
     public TranslateFragment() {
     }
@@ -37,6 +40,9 @@ public class TranslateFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable s) {
+
+
+
 
                 //TODO: here set get-query over Retrofit
 
