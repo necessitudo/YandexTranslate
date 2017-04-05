@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import io.realm.Realm;
 
@@ -45,7 +46,6 @@ public class TranslateFragment extends Fragment implements LoaderManager.LoaderC
 
 
                 getActivity().getSupportLoaderManager().initLoader(44, Bundle.EMPTY, TranslateFragment.this);
-                Log.d("happy", "it works!");
 
 
 
@@ -59,17 +59,18 @@ public class TranslateFragment extends Fragment implements LoaderManager.LoaderC
 
     @Override
     public Loader<String> onCreateLoader(int id, Bundle args) {
-        Loader<String> loader = new QueryTranslateLoader(getContext());
-        return loader;
+        return new QueryTranslateLoader(getContext());
     }
 
     @Override
     public void onLoadFinished(Loader<String> loader, String data) {
+        Toast.makeText(getActivity(), "Data :" + data, Toast.LENGTH_SHORT).show();
 
     }
 
     @Override
     public void onLoaderReset(Loader<String> loader) {
+        getActivity().getSupportLoaderManager().restartLoader(44, Bundle.EMPTY, this);
 
     }
 }

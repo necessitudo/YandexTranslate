@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity  {
 
     private FragmentTransaction tran;
 
@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
         tran = getSupportFragmentManager().beginTransaction();
         tran.add(R.id.frgCtrl, fragment);
         tran.commit();
+
 
     }
 
@@ -60,8 +61,7 @@ public class MainActivity extends AppCompatActivity {
 
        }
 
-
-
         return super.onOptionsItemSelected(item);
     }
+
 }
