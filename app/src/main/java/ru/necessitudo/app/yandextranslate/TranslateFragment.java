@@ -2,8 +2,11 @@ package ru.necessitudo.app.yandextranslate;
 
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.app.LoaderManager;
+import android.support.v4.content.Loader;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,8 +14,7 @@ import android.widget.EditText;
 
 import io.realm.Realm;
 
-
-public class TranslateFragment extends Fragment {
+public class TranslateFragment extends Fragment implements LoaderManager.LoaderCallbacks<String> {
 
     private EditText inputText;
     private Realm    realmDB;
@@ -42,6 +44,9 @@ public class TranslateFragment extends Fragment {
             public void afterTextChanged(Editable s) {
 
 
+                getActivity().getSupportLoaderManager().initLoader(44, Bundle.EMPTY, TranslateFragment.this);
+                Log.d("happy", "it works!");
+
 
 
                 //TODO: here set get-query over Retrofit
@@ -50,5 +55,21 @@ public class TranslateFragment extends Fragment {
         });
 
         return view;
+    }
+
+    @Override
+    public Loader<String> onCreateLoader(int id, Bundle args) {
+        Loader<String> loader = new QueryTranslateLoader(getContext());
+        return loader;
+    }
+
+    @Override
+    public void onLoadFinished(Loader<String> loader, String data) {
+
+    }
+
+    @Override
+    public void onLoaderReset(Loader<String> loader) {
+
     }
 }
